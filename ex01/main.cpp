@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 17:33:25 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/10/08 11:42:42 by arahmoun         ###   ########.fr       */
+/*   Created: 2023/10/08 11:41:39 by arahmoun          #+#    #+#             */
+/*   Updated: 2023/10/08 11:42:20 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-
-
-class PhoneBook
+int main()
 {
-    private :
-        std::string addPrompt;
-        std::string searchPrompt;
-        std::string exitPrompt;
-        std::string prompt;
-        int count;
-        int i;
-        Contact contacts[8];
-
-    public:
-        PhoneBook();
-        void    welcome();
-        void    scan();
-
+    PhoneBook ob;
+    std::cout << std::endl;
+    std::cout << "📞 Welcome to Your Awesome PhoneBook 📖" << std::endl;
+    std::cout << std::endl;
     
-};
-# endif
+    ob.welcome();
+    while (1)
+    {
+        ob.scan();
+    }
+    return 0;
+}

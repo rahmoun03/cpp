@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/27 17:30:24 by arahmoun          #+#    #+#              #
-#    Updated: 2023/10/08 11:43:00 by arahmoun         ###   ########.fr        #
+#    Created: 2023/10/08 12:20:52 by arahmoun          #+#    #+#              #
+#    Updated: 2023/10/08 12:29:59 by arahmoun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME	= account
 
-SRC = main.cpp PhoneBook.cpp Contact.cpp
+SRC = tests.cpp #acount.cpp
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
