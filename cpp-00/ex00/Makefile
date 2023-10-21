@@ -20,9 +20,9 @@ CC = c++
 
 all : $(NAME)
 	
-$(NAME):
+$(NAME): $(SRC)
 	@printf "    - Compiling $(NAME)...\n"
-	@ $(CC) $(FLAGS) megaphone.cpp -o $(NAME)
+	@ $(CC) $(FLAGS) $(SRC) -o $(NAME)
 	@printf "    - Executable ready\n"
 
 clean:

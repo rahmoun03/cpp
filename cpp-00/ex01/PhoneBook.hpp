@@ -30,9 +30,12 @@ class PhoneBook
 
     public:
         PhoneBook();
+        void    showContact();
         void    welcome();
         void    scan();
 
     
 };
+
+
 # endif

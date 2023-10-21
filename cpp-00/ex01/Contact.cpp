@@ -12,16 +12,29 @@
 
 #include "Contact.hpp"
 
-void    Contact::add()
+void    Contact::setAdd(){
+    add("please enter the first name : ", firstName);
+    add("please enter the last name : ", lastName);
+    add("please enter nickname name : ", nickName);
+    add("please enter phone number : ", number);
+    add("please enter darkest secret : ", secret);
+}
+
+void    Contact::add(std::string text, std::string& var)
 {
-    std::cout<<GREEN<<"enter the first name : " << DEF;
-    std::cin>>firstName;
-    std::cout<<GREEN<<"enter the last name : "<<DEF;
-    std::cin>>lastName;
-    std::cout<<GREEN<<"enter nickname name : "<<DEF;
-    std::cin>>nickName;
-    std::cout<<GREEN<<"enter phone number : "<<DEF;
-    std::cin>>number;
+    std::cout<<GREEN<<text << DEF;
+    std::getline(std::cin, var, '\n');
+    for (size_t i = 0; i < var.length(); i++)
+    {
+        if (var[i] < 32 || var[i] > 126)
+        {
+            add(text, var);
+            break;
+        }
+    }
+    if (!var.length())
+        add(text, var);
+    
 }
 
 Contact::Contact(){
@@ -70,6 +83,7 @@ void    Contact::print_info(){
     std::cout<<"the last name is : "<<lastName<<std::endl;
     std::cout<<"the nick name is : "<<nickName<<std::endl;
     std::cout<<"the phone number is : "<<number<<std::endl;
+    std::cout<<"the darkest secret is : "<<secret<<std::endl;
 }
 
 void    Contact::setter(int i)

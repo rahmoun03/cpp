@@ -14,6 +14,8 @@
 # define CONTACT_HPP
 #include <iostream>
 #include <cstdlib>
+#include <string>
+
 
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
@@ -29,10 +31,12 @@ class Contact
         std::string lastName;
         std::string number;
         std::string nickName;
+        std::string secret;
+        void    getter(std::string str);
+        void    add(std::string text, std::string& var);
     public:
         Contact();
-        void    add();
-        void    getter(std::string str);
+        void    setAdd();
         void    setter(int i);
         void    print_contacts();
         void    print_info();

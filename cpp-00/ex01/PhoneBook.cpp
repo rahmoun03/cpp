@@ -20,13 +20,41 @@ PhoneBook::PhoneBook(){
     exitPrompt = "EXIT";
 }
 
+void    PhoneBook::showContact(){
+    std::cout<<GREEN<<"enter index do you want to show :  "<<DEF;
+    std::getline(std::cin, index, '\n');
+    if (!index.length())
+    {
+        std::cout<<RED<<"THE INDEX IS WRONG... "<<DEF<<std::endl;
+        return ;
+    }
+    for (size_t i = 0; i < index.length(); i++)
+    {
+        if (index[i] < 48 || index[i] > 57)
+        {
+            std::cout<<RED<<"THE INDEX IS WRONG... "<<DEF<<std::endl;
+            return ;
+        }
+    }
+    if (std::atoi(index.c_str()) < 8 && std::atoi(index.c_str()) >= 0)
+    {
+        if(i >= std::atoi(index.c_str()))
+            contacts[std::atoi(index.c_str())].print_info();
+        else
+            std::cout<<RED<<"THE INDEX IS OUT OF RANGE... "<<DEF<<std::endl;
+    }
+    else
+        std::cout<<RED<<"THE INDEX IS WRONG... "<<DEF<<std::endl;
+}
+
 void    PhoneBook::scan()
 {
-    std::cin>>prompt;
+    std::cout<<BLUE<<"$> "<<DEF;
+    std::getline(std::cin, prompt, '\n');
     if (prompt == addPrompt)
     {
         i++;
-        contacts[i % 8].add();
+        contacts[i % 8].setAdd();
         if (i < 8)
             count = i + 1;
         contacts[i % 8].setter(i % 8);
@@ -49,17 +77,7 @@ void    PhoneBook::scan()
         else
             std::cout<<"|          |          |          |          |"<<std::endl;
         std::cout<<"+-------------------------------------------+"<<std::endl;
-        std::cout<<GREEN<<"enter index do you want to show :  "<<DEF;
-        std::cin>>index;
-        if (std::stoi(index) < 8 && std::stoi(index) >= 0)
-        {
-            if(i >= std::stoi(index))
-                contacts[std::stoi(index)].print_info();
-            else
-                return ;
-        }
-        else
-            return ;
+        showContact();
     }
     else if (prompt == exitPrompt)
     {
