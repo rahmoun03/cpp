@@ -10,4 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Harl.hpp"
 
+int main() {
+    Harl harl;
+
+    // Test different complaint levels
+    harl.complaint("DEBUG");
+    harl.complaint("INFO");
+    harl.complaint("WARNING");
+    harl.complaint("ERROR");
+
+    // Test an invalid complaint level
+    harl.complaint("INVALID_LEVEL");
+
+    return 0;
+}

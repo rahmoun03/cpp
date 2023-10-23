@@ -19,19 +19,14 @@
 class Harl
 {
     private:
-        /* data */
+        void debug();
+        void info();
+        void warning();
+        void error();
     public:
-        Harl(/* args */);
+        void    complaint(std::string level);
+        Harl();
         ~Harl();
 };
-
-Harl::Harl(/* args */)
-{
-}
-
-Harl::~Harl()
-{
-}
-
 
 #endif
