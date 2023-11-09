@@ -12,7 +12,7 @@
 
 NAME = Fixed
 
-SRC = main.cpp Fixed.cpp
+SRC = main.cpp Fixed.cpp Operators.cpp
 
 FLAGS = -Wall -Werror -Wextra -std=c++98
 

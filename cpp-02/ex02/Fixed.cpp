@@ -13,27 +13,27 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() {//                                                 def constructor
-    std::cout << "Default constructor called" <<std::endl;
+    // std::cout << "Default constructor called" <<std::endl;
     value = 0;
 }
 
 Fixed::Fixed(const Fixed& other) {//                                copy constructor
-    std::cout << "Copy constructor called" <<std::endl;
+    // std::cout << "Copy constructor called" <<std::endl;
     *this = other;   
 }
 
 Fixed::Fixed(const int intValue){//                                   int constructor
-    std::cout << "Int constructor called" << std::endl;
+    // std::cout << "Int constructor called" << std::endl;
     value = intValue << fractionalBits;
 }
 
 Fixed::Fixed(const float floatValue){//                               float constructor
-    std::cout << "Float constructor called" <<std::endl;
+    // std::cout << "Float constructor called" <<std::endl;
     value = roundf(floatValue * (1 << fractionalBits));
 }
 
 Fixed& Fixed::operator=(const Fixed& other){//                         assignment operator
-    std::cout << "Copy assignment operator called" <<std::endl;
+    // std::cout << "Copy assignment operator called" <<std::endl;
     if(this != &other){
         value = other.getRawBits();
     }
@@ -47,7 +47,7 @@ std::ostream &operator<<(std::ostream &os, const Fixed &other)
 }
 
 int Fixed::getRawBits(void) const{
-    std::cout << "getRawBits member function called" <<std::endl;
+    // std::cout << "getRawBits member function called" <<std::endl;
     return value;
 }
 
@@ -64,6 +64,28 @@ int Fixed::toInt( void ) const{
     return value / pow(2, fractionalBits);
 }
 
+
+
+
+const Fixed& Fixed::min(const Fixed& a, const Fixed& b){
+    return (a.value < b.value) ? a : b;
+}
+
+Fixed& Fixed::min(Fixed& a, Fixed& b){
+    return (a.value < b.value) ? a : b;
+}
+
+const Fixed& Fixed::max(const Fixed& a, const Fixed& b){
+    return (a.value > b.value) ? a : b;
+}
+
+Fixed& Fixed::max(Fixed& a, Fixed& b){
+    return (a.value > b.value) ? a : b;
+}
+
+
+
+
 Fixed::~Fixed(){
-    std::cout << "Destructor called" <<std::endl;
+    // std::cout << "Destructor called" <<std::endl;
 }

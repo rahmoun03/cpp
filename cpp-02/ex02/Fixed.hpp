@@ -27,8 +27,33 @@ class Fixed
         Fixed(const Fixed& other); // copy constructor
         Fixed(const int intValue); // A constructor that takes a constant integer as a parameter
         Fixed(const float floatValue); // • A constructor that takes a constant floating-point number as a parameter.
-        Fixed& operator=(const Fixed& other); //copy assignment operator
+        
+        //copy assignment operator
+        Fixed& operator=(const Fixed& other);
+        Fixed operator+(const Fixed& other) const;
+        Fixed operator-(const Fixed& other) const;
+        Fixed operator*(const Fixed& other) const;
+        Fixed operator/(const Fixed& other) const;
+
+        bool operator>(const Fixed& other) const;
+        bool operator<(const Fixed& other) const;
+        bool operator>=(const Fixed& other) const;
+        bool operator<=(const Fixed& other) const;
+        bool operator==(const Fixed& other) const;
+        bool operator!=(const Fixed& other) const;
+        
+        Fixed& operator++();         // Pre-increment
+        Fixed operator++(int);       // Post-increment
+        Fixed& operator--();         // Pre-decrement
+        Fixed operator--(int);       // Post-decrement 
+        
         ~Fixed(); //destructor
+
+        static Fixed& min(Fixed& a, Fixed& b);
+        static const Fixed& min(const Fixed& a, const Fixed& b);
+        static Fixed& max(Fixed& a, Fixed& b);
+        static const Fixed& max(const Fixed& a, const Fixed& b);
+
         int     getRawBits(void) const;
         void    setRawBits(int const raw);
         float   toFloat( void ) const;
