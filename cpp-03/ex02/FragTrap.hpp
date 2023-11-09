@@ -6,11 +6,12 @@
 
 class FragTrap : public ClapTrap
 {
-    private:
-        FragTrap();
     public:
-        FragTrap(std::string Name);
-        ~FragTrap();
+        FragTrap(); // def
+        FragTrap(const FragTrap& other); // copy constructor
+        FragTrap& operator=(const FragTrap& other); // copy assignment operator
+        FragTrap(std::string Name); // para
+        ~FragTrap(); // destructor
 
         void highFivesGuys();
 };

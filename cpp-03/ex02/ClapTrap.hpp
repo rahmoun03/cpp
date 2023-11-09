@@ -1,5 +1,5 @@
 #ifndef CLAPTRAP_HPP
-#define CALPTRAP_HPP
+#define CLAPTRAP_HPP
 
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
@@ -18,11 +18,11 @@ class ClapTrap
         int energyPoints;
         int attackDamage;
     public:
-        ClapTrap();
-        ClapTrap(std::string arg);
-        ~ClapTrap();
+        ClapTrap(); // default 
+        ClapTrap(std::string arg); // para
+        ~ClapTrap(); // destructor
         ClapTrap(const ClapTrap& other); // copy constructor
-        ClapTrap& operator=(const ClapTrap& other);
+        ClapTrap& operator=(const ClapTrap& other); // copy assignment operator
         
         void    attack(const std::string& target);
         void    takeDamage(unsigned int amount);
