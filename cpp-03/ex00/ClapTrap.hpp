@@ -18,7 +18,7 @@ class ClapTrap
         int energyPoints;
         int attackDamage;
     public:
-        ClapTrap();
+        ClapTrap(); // default 
         ClapTrap(std::string arg); // para
         ~ClapTrap(); // destructor
         ClapTrap(const ClapTrap& other); // copy constructor
