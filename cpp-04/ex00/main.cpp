@@ -10,7 +10,6 @@ int main() {
     const Animal* i = new Cat();
     const WrongAnimal* wrongMeta = new WrongAnimal();
     const WrongAnimal* wrongJ = new WrongCat(); // Note: Using WrongCat instead of WrongAnimal
-    const WrongAnimal* wrongI = new WrongCat(); // Note: Using WrongCat instead of WrongAnimal
 
     std::cout << j->getType() << " " << std::endl;
     std::cout << i->getType() << " " << std::endl;
@@ -19,9 +18,7 @@ int main() {
     meta->makeSound();
 
     std::cout << wrongJ->getType() << " " << std::endl;
-    std::cout << wrongI->getType() << " " << std::endl;
-    wrongI->makeSound(); // will output the WrongCat sound!
-    wrongJ->makeSound();
+    wrongJ->makeSound(); // will output the WrongCat sound!
     wrongMeta->makeSound();
 
     delete meta;
@@ -29,7 +26,6 @@ int main() {
     delete i;
     delete wrongMeta;
     delete wrongJ;
-    delete wrongI;
 
     return 0;
 }

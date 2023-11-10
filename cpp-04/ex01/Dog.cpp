@@ -34,6 +34,11 @@ Dog::~Dog()
     delete brain;
     std::cout << "Dog : destructor called !" <<std::endl;
 }
+
 void Dog::makeSound() const{
     std::cout<<"how how "<<std::endl;
+}
+
+Brain* Dog::getBrain(){
+    return brain;
 }
