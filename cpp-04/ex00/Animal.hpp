@@ -11,7 +11,8 @@ class Animal
         Animal(std::string name);
         Animal(const Animal& other); // copy constructor
         Animal& operator=(const Animal& other);// copy assignment operator
-        ~Animal(); // destructor
+        virtual ~Animal(); // destructor
+        
         virtual void makeSound() const;
         const std::string& getType() const;
 };

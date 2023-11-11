@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 
@@ -11,10 +11,11 @@ int main() {
 
     Dog dog2(dog1);
 
+    dog2.getBrain()->displayIdeas();
     std::cout <<dog1.getBrain() << std::endl << dog2.getBrain() <<std::endl; 
     // Create and fill an array of Animal objects
     const int arraySize = 4;
-    Animal* animalArray[arraySize];
+    AAnimal* animalArray[arraySize];
     animalArray[0] = new Dog();
     animalArray[1] = new Dog();
     animalArray[2] = new Cat();
