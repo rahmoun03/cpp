@@ -3,18 +3,18 @@
 Animal::Animal()
 {
     type = "Animal";
-    std::cout << type <<" : Default constructor called" <<std::endl;
+    std::cout <<"Animal  Default constructor called" <<std::endl;
 }
 
 Animal::Animal(const Animal& other)
 {
-    std::cout << type <<" : copy constructor called" <<std::endl;
+    std::cout <<"Animal copy constructor called" <<std::endl;
     *this = other;
 }
 
 Animal& Animal::operator=(const Animal& other)
 {
-    std::cout << type <<" : copy assignment operator called" <<std::endl;
+    std::cout << "Animal copy assignment operator called" <<std::endl;
     if(this != &other)
     {
         this->type = other.getType();
@@ -24,13 +24,13 @@ Animal& Animal::operator=(const Animal& other)
 
 Animal::Animal(std::string name)
 {
-    std::cout << type <<" : parametrized constructor called" <<std::endl;
+    std::cout <<"Animal parametrized constructor called" <<std::endl;
     type = name;
 }
 
 Animal::~Animal()
 {
-    std::cout << type <<" : destructor called !" <<std::endl;
+    std::cout <<"Animal destructor called !" <<std::endl;
 }
 
 const std::string& Animal::getType() const {

@@ -5,8 +5,11 @@
 
 class WrongAnimal {
 public:
-    WrongAnimal();
-    ~WrongAnimal();
+    WrongAnimal();// def constructor
+    ~WrongAnimal();// destructor
+    WrongAnimal(std::string name);// para constructor
+    WrongAnimal(const WrongAnimal& other); // copy constructor
+    WrongAnimal& operator=(const WrongAnimal& other);// copy assignment operator
     void makeSound() const;
     const std::string& getType() const;
 
