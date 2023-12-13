@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 01:36:54 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 03:36:46 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/13 03:59:57 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FORM_HPP
 
 # include "Bureaucrat.hpp"
+# include <exception>
 
 class Form
 {
@@ -29,14 +30,21 @@ class Form
         Form& operator=(const Form &other);
         ~Form();
 
+        bool getSign() const;
+        std::string getName() const;
+        int getGradeToSign() const;
+        int getGradeToExecute() const;
+
         class GradeTooHighException : public std::exception
         {
-            const char *what() const __NOEXCEPT;
+            const char *what() const _NOEXCEPT;
         };
         class GradeTooLowException : public std::exception
         {
-            const char *what() const __NOEXCEPT;
+            const char *what() const _NOEXCEPT;
         };
 };
+
+std::ostream &operator<<(std::ostream os, const Form &other);
 
 #endif

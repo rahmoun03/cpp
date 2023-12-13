@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 02:45:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 03:39:43 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/13 04:09:30 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,34 @@ Form::~Form()
     std::cout << "The Form Destructor Called !" << std::endl;
 }
 
+// geters
 
-// std::ostream &operator<<(std::ostream os, const Form &other)
-// {
-//     os << 
-// }
+bool Form::getSign() const
+{
+    return sign;
+}
+std::string Form::getName() const
+{
+    return (name);
+}
+int Form::getGradeToSign() const
+{
+    return (gradeToSign);
+}
+int Form::getGradeToExecute() const
+{
+    return (gradeToExec);
+}
 
+
+
+
+std::ostream &operator<<(std::ostream &os, const Form &other)
+{
+    os << "Form: " << other.getName() << "\nSigned: " << (other.getSign() ? "Yes" : "No")
+       << "\nGrade to sign: " << other.getGradeToSign() << "\nGrade to execute: " << other.getGradeToExecute();
+    return os;
+}
 
 const char *Form::GradeTooLowException::what() const _NOEXCEPT
 {

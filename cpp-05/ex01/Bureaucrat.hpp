@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:45 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 01:33:44 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/13 03:46:59 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BUREAUCRAT_HPP
 
 #include <iostream>
-// #include <exception>
+#include <exception>
 
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
