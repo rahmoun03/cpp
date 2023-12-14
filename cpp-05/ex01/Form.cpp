@@ -6,11 +6,12 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 02:45:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 04:09:30 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/14 05:41:32 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form() : name("NULL"), gradeToSign(150), gradeToExec(150)
 {
@@ -38,14 +39,40 @@ Form& Form::operator=(const Form &other)
     return (*this);
 }
 
-
-
 Form::~Form()
 {
     std::cout << "The Form Destructor Called !" << std::endl;
 }
 
-// geters
+
+void    Form::beSigned(Bureaucrat &bureaucrat)
+{
+    if (bureaucrat.getGrade() <= gradeToSign)
+        sign = true;
+    else
+        throw(GradeTooLowException());
+}
+
+std::ostream &operator<<(std::ostream &os, const Form &other)
+{
+    os << "Form: " << other.getName() << "\nSigned: " << (other.getSign() ? "Yes" : "No")
+       << "\nGrade to sign: " << other.getGradeToSign() << "\nGrade to execute: " << other.getGradeToExecute();
+    return os;
+}
+
+
+/* ----------------  exception classes ---------------------------  */
+const char *Form::GradeTooLowException::what() const _NOEXCEPT
+{
+    return ("Exception Form : the number of grade too low !");
+}
+
+const char *Form::GradeTooHighException::what() const _NOEXCEPT
+{
+    return ("Exception Form : the number of grade is too high !");
+}
+
+/* ---------------------------   geters   ------------------------------*/
 
 bool Form::getSign() const
 {
@@ -62,24 +89,4 @@ int Form::getGradeToSign() const
 int Form::getGradeToExecute() const
 {
     return (gradeToExec);
-}
-
-
-
-
-std::ostream &operator<<(std::ostream &os, const Form &other)
-{
-    os << "Form: " << other.getName() << "\nSigned: " << (other.getSign() ? "Yes" : "No")
-       << "\nGrade to sign: " << other.getGradeToSign() << "\nGrade to execute: " << other.getGradeToExecute();
-    return os;
-}
-
-const char *Form::GradeTooLowException::what() const _NOEXCEPT
-{
-    return ("Exception : the number of grade too low !");
-}
-
-const char *Form::GradeTooHighException::what() const _NOEXCEPT
-{
-    return ("Exception : the number of grade is too high !");
 }

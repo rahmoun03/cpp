@@ -6,11 +6,13 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:33:26 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 03:34:18 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/14 05:34:38 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
 
 Bureaucrat::Bureaucrat() : name("null"), grade(150)
 {
@@ -75,6 +77,17 @@ const std::string Bureaucrat::getName() const
     return name;
 }
 
+void	Bureaucrat::signForm(Form &form)
+{
+    try{
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.getName() << std::endl;
+    }
+    catch(Form::GradeTooLowException &e){
+        std::cout << name << " couldn\016’t sign " << form.getName() << " because the grade is too low" <<std::endl;
+    }
+    
+}
 
 Bureaucrat::~Bureaucrat()
 {

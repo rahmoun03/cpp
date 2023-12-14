@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:33:26 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 03:34:26 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/14 04:58:32 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ void    Bureaucrat::incrementGrade()
 {
     if (grade - 1 < 1)
         throw(GradeTooHighException());
-
     else
-        grade--;
-    
+        grade--;    
 }
 
 void    Bureaucrat::decrementGrade()

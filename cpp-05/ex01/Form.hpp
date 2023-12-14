@@ -6,16 +6,19 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 01:36:54 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/13 03:59:57 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/14 05:29:59 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP 
 # define FORM_HPP
 
-# include "Bureaucrat.hpp"
-# include <exception>
 
+# include <exception>
+# include <iostream>
+
+
+class Bureaucrat;
 class Form
 {
     private:
@@ -35,13 +38,17 @@ class Form
         int getGradeToSign() const;
         int getGradeToExecute() const;
 
+        void    beSigned(Bureaucrat &bureaucrat);
+
         class GradeTooHighException : public std::exception
         {
-            const char *what() const _NOEXCEPT;
+            public :
+                const char *what() const _NOEXCEPT;
         };
         class GradeTooLowException : public std::exception
         {
-            const char *what() const _NOEXCEPT;
+            public :
+                const char *what() const _NOEXCEPT;
         };
 };
 
