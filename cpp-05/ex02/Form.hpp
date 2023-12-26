@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 12:44:14 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/26 12:45:47 by arahmoun         ###   ########.fr       */
+/*   Created: 2023/12/26 12:53:15 by arahmoun          #+#    #+#             */
+/*   Updated: 2023/12/26 12:53:16 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef AFORM_HPP 
-# define AFORM_HPP
+
+#ifndef FORM_HPP 
+# define FORM_HPP
 
 
 # include <exception>
@@ -20,7 +21,7 @@
 
 
 class Bureaucrat;
-class AForm
+class Form
 {
     private:
         const       std::string name;
@@ -28,11 +29,11 @@ class AForm
         const int   gradeToSign;
         const int   gradeToExec;
     public:
-        AForm();
-        AForm(const std::string Name, int GradeToSign, int GradeToExecute);
-        AForm(const AForm &other);
-        AForm& operator=(const AForm &other);
-        ~AForm();
+        Form();
+        Form(const std::string Name, int GradeToSign, int GradeToExecute);
+        Form(const Form &other);
+        Form& operator=(const Form &other);
+        ~Form();
 
         bool getSign() const;
         std::string getName() const;
@@ -53,6 +54,6 @@ class AForm
         };
 };
 
-std::ostream &operator<<(std::ostream os, const AForm &other);
+std::ostream &operator<<(std::ostream os, const Form &other);
 
 #endif
