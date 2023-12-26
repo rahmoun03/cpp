@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:28 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/26 12:26:17 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:48:56 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int main() {
     try {
         Bureaucrat bob("Bob", 5);
-        Form contract("Contract", 3, 3);
+        AForm *contract = new AForm("Contract", 3, 3);
 
         bob.signForm(contract); // Bob tries to sign the contract
 

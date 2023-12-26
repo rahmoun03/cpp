@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:45 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/14 05:29:33 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/26 12:46:58 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define BLUE "\033[0;34m"
 # define DEF "\033[0m"
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -43,7 +43,7 @@ class Bureaucrat
 		void		incrementGrade();
 		void		decrementGrade();
 		
-		void	signForm(Form &form);
+		void	signForm(AForm &form);
 		
 		// exception classes
 		class GradeTooHighException : public std::exception
