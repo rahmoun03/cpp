@@ -6,24 +6,30 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:28 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/26 12:48:56 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:21:24 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 
 int main() {
     try {
-        Bureaucrat bob("Bob", 5);
-        AForm *contract = new AForm("Contract", 3, 3);
+        Bureaucrat bob("Bob", 140);
+        AForm *sh = new ShrubberyCreationForm("target"); //grade to sign = 145, grade to exec = 137
+        
+        std::cout << std::endl;
+        bob.signForm(*sh); // try to signed the form
+        bob.executeForm(*sh); // try to execute the form
 
-        bob.signForm(contract); // Bob tries to sign the contract
-
-        Bureaucrat alice("Alice", 2);
-        alice.signForm(contract); // Alice tries to sign the contract
-
+        std::cout << std::endl;
+        
+        std::cout << *sh << std::endl;
+        std::cout << std::endl;
+        
+        delete sh;
     } catch (std::exception& e) {
         std::cout << "Exception: " << e.what() << std::endl;
     }

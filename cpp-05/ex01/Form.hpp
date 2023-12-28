@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 01:36:54 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/14 05:29:59 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:17:46 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ class Form
         };
 };
 
-std::ostream &operator<<(std::ostream os, const Form &other);
+std::ostream &operator<<(std::ostream &os, const Form &other);
 
 #endif
