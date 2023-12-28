@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:49:04 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/28 17:07:25 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/28 17:56:31 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ public:
     ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other);
     ~ShrubberyCreationForm();
 
-    void    execute(Bureaucrat const &executor) const ;
+    void    execute(Bureaucrat const &executor) const;
 
 };
