@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 17:39:49 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/28 18:01:20 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:50:25 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include <fstream>
 #include <exception>
 
 # define GREEN "\033[0;32m"

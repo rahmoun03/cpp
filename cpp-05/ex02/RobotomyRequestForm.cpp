@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 18:01:23 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/28 18:06:10 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/29 18:49:21 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void    RobotomyRequestForm::execute(Bureaucrat const &executor) const{
     if (executor.getGrade() > this->getGradeToExecute())
         throw(GradeTooLowException());
         
-    std::cout << BLUE << target <<" has been robotomized successfully 50\% of the time." << DEF << std::endl;
+    std::cout << YOLLOW << target << DEF <<" has been robotomized successfully 50\% of the time."  << std::endl;
 }
