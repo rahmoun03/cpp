@@ -6,13 +6,15 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:33:26 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/30 00:55:49 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/30 00:56:55 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
-Bureaucrat::Bureaucrat() : name("null"), grade(150)
+
+Bureaucrat::Bureaucrat()
 {
     std::cout << GREEN << "The Bureaucrat default constructor called !" << DEF << std::endl;
 }
@@ -51,7 +53,7 @@ void    Bureaucrat::incrementGrade()
 {
     if (grade - 1 < 1)
         throw(GradeTooHighException());
-    grade--;    
+    grade--;
 }
 
 void    Bureaucrat::decrementGrade()
@@ -71,6 +73,28 @@ const std::string Bureaucrat::getName() const
     return name;
 }
 
+void	Bureaucrat::signForm(AForm &form)
+{
+    try{
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.getName() << std::endl;
+    }
+    catch(AForm::GradeTooLowException &e){
+        std::cout << name << " couldn\016’t sign " << form.getName() << " because " << e.what() <<std::endl;
+    }
+}
+
+void	Bureaucrat::executeForm(AForm const &form){
+	try
+	{
+		form.execute(*this);
+		std::cout << name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
 
 Bureaucrat::~Bureaucrat()
 {
@@ -79,10 +103,10 @@ Bureaucrat::~Bureaucrat()
 // Exception funcs
 const char *Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
 {
-    return ("Exception : the number of grade too low !");
+    return ("the grade too is low !");
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
 {
-    return ("Exception : the number of grade is too high !");
+    return ("the grade is too high !");
 }

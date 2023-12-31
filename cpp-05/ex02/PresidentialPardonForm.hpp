@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 18:33:29 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/29 18:50:19 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/31 16:19:46 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,14 @@ class PresidentialPardonForm : public AForm
 {
     private:
         std::string target;
-    public:
         PresidentialPardonForm();
+    public:
         PresidentialPardonForm(std::string target);
         PresidentialPardonForm(const PresidentialPardonForm &other);
+        PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
         ~PresidentialPardonForm();
         
         void    execute(Bureaucrat const &executor) const;
 };
-
-
 
 #endif

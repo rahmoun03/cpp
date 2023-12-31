@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:45 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/14 05:29:33 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/31 16:21:05 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ class Bureaucrat
 	private:
 		const	std::string name;
 		int		grade;
+		Bureaucrat();
 
 	public:
-		Bureaucrat();
 		Bureaucrat(std::string Name, int Grade);
 		Bureaucrat(const Bureaucrat &other);
 		Bureaucrat& operator=(const Bureaucrat &other);

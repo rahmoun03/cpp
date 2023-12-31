@@ -1,10 +1,11 @@
-NAME = Bureaucrat
+NAME = Form
 
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 CC = c++
 
-SRCS = main.cpp Bureaucrat.cpp
+
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 
 
 all : $(NAME)
@@ -39,7 +40,6 @@ $(NAME) : $(SRCS)
 clean : 
 	@rm -rf $(NAME)
 	@tput setaf 1; echo "excutable file removed ."
-
 fclean : clean
-
+	@rm -rf *_shrubbery
 re : fclean all
