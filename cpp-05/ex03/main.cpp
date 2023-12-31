@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 09:28:28 by arahmoun          #+#    #+#             */
-/*   Updated: 2023/12/31 16:25:22 by arahmoun         ###   ########.fr       */
+/*   Updated: 2023/12/31 18:46:13 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,33 @@ int main() {
         AForm* rrf;
 
         rrf = someRandomIntern.makeForm("robotomy request", "Bender");
-        bob.signForm(*rrf);
-        bob.executeForm(*rrf);
-        delete rrf; // Remember to deallocate memory
+        if(rrf)
+        {
+            bob.signForm(*rrf);
+            bob.executeForm(*rrf);
+            delete rrf;
+        }
+
+        
+        rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+        if(rrf)
+        {    
+            bob.signForm(*rrf);
+            bob.executeForm(*rrf);
+            delete rrf;
+        }
+
+        rrf = someRandomIntern.makeForm("pesidential pardon", "Bender");
+        if(rrf)
+        {
+            bob.signForm(*rrf);
+            bob.executeForm(*rrf);
+            delete rrf;
+        }
 
         return 0;
-    } catch (std::exception& e) {
+    } 
+    catch (std::exception& e) {
         std::cout << e.what() << std::endl;
     }
 }
