@@ -2,10 +2,10 @@ NAME = exec
 
 SRC = Base.cpp A.cpp B.cpp C.cpp main.cpp
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 ${NAME} : $(SRC)
-	@g++ ${CFLAGS} ${SRC} -o exec
+	@c++ ${CFLAGS} ${SRC} -o exec
 	@tput setaf 2; echo "executable file is ready"
 	
 all : ${NAME}

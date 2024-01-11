@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:26 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/09 15:04:59 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/11 22:34:35 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class A : public Base
 {
     private:
     public:
-        A();
         ~A();
 };
 

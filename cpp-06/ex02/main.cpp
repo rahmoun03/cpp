@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:50:28 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/10 23:23:56 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/11 23:37:02 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,17 @@
 #include "C.hpp"
 
 Base *generate(void){
-    std::cout << "the generate is caled" << std::endl;
     srand(time(NULL));
     int i = std::rand() % 3;
-    std::cout << i << std::endl;
     switch (i)
     {
     case 0:
-        std::cout << "make A" << std::endl;
         return (dynamic_cast<Base *>(new A()));
         break;
     case 1:
-        std::cout << "make B" << std::endl;
         return (dynamic_cast<Base *>(new B()));
         break;
     case 2:
-        std::cout << "make C" << std::endl;
         return (dynamic_cast<Base *>(new C()));
         break;
     default:
@@ -40,19 +35,58 @@ Base *generate(void){
     return NULL;
 }
 
+void identify(Base* p) {
+    if (dynamic_cast<A*>(p)) {
+        std::cout << "A" << std::endl;
+    } 
+    else if (dynamic_cast<B*>(p)) {
+        std::cout << "B" << std::endl;
+    } 
+    else if (dynamic_cast<C*>(p)) {
+        std::cout << "C" << std::endl;
+    } 
+    else {
+        std::cout << "*: Unknown type !" << std::endl;
+    }
+}
+
+
+void identify(Base& p) {
+    try
+    {
+        (void)dynamic_cast<A &>(p);
+        std::cout << "A" << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        try
+        {
+            (void)dynamic_cast<B &>(p);
+            std::cout << "B" << std::endl;
+        }
+        catch(const std::exception& e)
+        {
+            try
+            {
+                (void)dynamic_cast<C &>(p);
+                std::cout << "C" << std::endl;
+            }
+            catch(const std::exception& e)
+            {
+                (void)e;
+                std::cout << "&: Unknown type !" << std::endl;
+            }
+        }
+    }
+}
 
 int main()
 {
+	Base *base = generate();
+
+	identify(base);
+	identify(*base);
     
-    // Base *a = generate();
-    // Base *c = new C();
-
-    B *b = new B();
-    Base *base = dynamic_cast<Base *>(b);
-
-    // delete b;
-    delete base;
-
-    // delete a;
-    // delete c;
+	delete base;
+	return (0);
 }

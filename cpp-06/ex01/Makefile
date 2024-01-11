@@ -2,7 +2,7 @@ NAME = Serializer
 
 SRC = Serializer.cpp main.cpp
 
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 ${NAME} : $(SRC)
 	@c++ ${CFLAGS} ${SRC} -o Serializer

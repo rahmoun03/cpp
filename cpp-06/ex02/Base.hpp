@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:36:33 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/10 23:25:27 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/11 22:34:25 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Base
 {
     private:
     public:
-        Base();
         virtual ~Base();
 };
 
