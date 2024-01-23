@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 03:31:36 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/20 03:37:14 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/22 10:38:28 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int Array<T>::size() const
 
 
 template <class T>
-T   &Array<T>::operator[](unsigned int index)
+T   &Array<T>::operator[](unsigned int index) 
 {
     if(index >= size_)
         throw (OutOfBounds());
@@ -38,9 +38,8 @@ T   &Array<T>::operator[](unsigned int index)
 template <class T>
 Array<T>::Array(const Array<T> &other)
 {
-    // std::cout << "copy constructor called \n" ;
     size_ = other.size();
-    this->array = new T[size_];
+    this->array = new T[size_]();
     for (size_t i = 0; i < size_; i++)
     {
         this->array[i] = other.array[i];
@@ -51,12 +50,11 @@ Array<T>::Array(const Array<T> &other)
 template <class T>
 Array<T> &Array<T>::operator=(const Array<T> &other)
 {
-    // std::cout << "copy assignment operator called \n" ;
     if (this != &other)
     {
         size_ = other.size();
-        delete[] array; 
-        this->array = new T[size_];
+        delete[] array;
+        this->array = new T[size_]();
         for (size_t i = 0; i < size_; i++)
         {
             this->array[i] = other.array[i];
@@ -76,13 +74,12 @@ template <class T>
 Array<T>::Array( unsigned int n)
 {
     size_ = n;
-    array = new T[n];
+    array = new T[n]();
 }
 
 template <class T>
 Array<T>::~Array()
 {
-    // std::cout << "the destructor called \n";
     delete[] array;
 }
 

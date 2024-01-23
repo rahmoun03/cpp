@@ -2,7 +2,7 @@ NAME = Array
 
 SRC = main.cpp
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 ${NAME} : $(SRC)
 	@c++ ${CFLAGS} ${SRC} -o $(NAME)

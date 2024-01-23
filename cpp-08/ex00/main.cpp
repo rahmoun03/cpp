@@ -5,30 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 01:50:40 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/22 10:40:14 by arahmoun         ###   ########.fr       */
+/*   Created: 2024/01/21 03:50:07 by arahmoun          #+#    #+#             */
+/*   Updated: 2024/01/21 09:44:40 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include "easyfind.hpp"
 
 int main()
 {
-    int arr_int[6] = {1,2,3,4,5,6};
-    std::string array[5] = {"ayoub" , "simo", "younes", "jawad", "chabab"} ;
-    char arr_char[6] = "ayoub";
+    // vector
+    std::list <int> vec;
 
-    std::cout << "test for array to int \n" ;
-    iter(arr_int, 6, printelement<int>);
-    std::cout << std::endl;
+    vec.__emplace_back(42);
+    vec.__emplace_back(1337);
+    vec.__emplace_back(100);
+    vec.__emplace_back(01);
+    vec.__emplace_back(03);
+    easyFind(vec, 1);
+    vec.sort();
+    for (std::list<int>::iterator it = vec.begin(); it != vec.end(); ++it)
+    {
+        std::cout << *it << std::endl;
+    }
+    
 
-    std::cout << "test for array to char \n" ;
-    iter(arr_char, 5, printelement<char>);
-    std::cout << std::endl;
-
-    std::cout << "test for array to string \n" ;
-    iter(array, 5, printelement<std::string>);
-    std::cout << std::endl;
+    // lis
+    std::list<int> list(4, 44);
+    easyFind(list, 4);
 
     return 0;
 }

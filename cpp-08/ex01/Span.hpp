@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 19:22:15 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/22 10:38:12 by arahmoun         ###   ########.fr       */
+/*   Created: 2024/01/21 08:53:39 by arahmoun          #+#    #+#             */
+/*   Updated: 2024/01/22 15:29:14 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-#define ARRAY_HPP
+#ifndef SPAN_HPP 
+#define SPAN_HPP
 
 #include <iostream>
+#include <vector>
+#include <iterator>
+#include <algorithm>
 #include <exception>
 
-template <class T>
-class Array
+class Span
 {
     private:
+        std::vector<int> vec;
         unsigned int size_;
-        T *array;
+        Span();
     public:
-        Array();
-        Array(unsigned int n);
-        Array(const Array<T> &other);
-        Array<T> &operator=(const Array<T> &other);
-        T &operator[](unsigned int index);
-        unsigned int size() const;
-        ~Array();
-        class OutOfBounds : public std::exception
+        Span(unsigned int N);
+        ~Span();
+        void    addNumber(int value);
+        int     shortestSpan() const;
+        int     longestSpan() const;
+        class containerIsFull : public std::exception
+        {
+            public :
+                const char* what() const _NOEXCEPT;
+        };
+        class noSpanToFind : public std::exception
         {
             public :
                 const char* what() const _NOEXCEPT;
         };
 };
-
-#include "Array.tpp"
 
 #endif 
