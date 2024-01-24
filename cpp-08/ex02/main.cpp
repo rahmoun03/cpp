@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:33:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/23 15:11:34 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:43:22 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int main()
 {
-    std::deque<int> q;
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);

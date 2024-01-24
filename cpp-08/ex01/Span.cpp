@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 09:48:11 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/22 18:32:40 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/24 09:26:49 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,3 @@ Span::~Span()
 {
 }
 
-// void    Span::print(void)
-// {
-//     std::vector<int>::iterator it = vec.begin();
-//     for (it = vec.begin() ;  it != vec.end() ; it++)
-//     {
-//         std::cout << *it << ", ";
-//     }
-// }
