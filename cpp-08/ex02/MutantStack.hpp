@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:09 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/23 15:43:27 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:39:35 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,46 @@
 #define MUTANTSTACK_HPP
 #include <stack>
 #include <deque>
+#include <queue>
+#include <list>
+#include <vector>
 #include <algorithm>
 #include <iterator>
 #include <iostream>
 
-template <class T, class Container = std::deque<T> >
+template <class T, class Container = std::deque<T > >
 class MutantStack : public std::stack<T, Container>
 {
+        
     public:
-        MutantStack() ;
+        MutantStack();
         MutantStack(const MutantStack<T, Container> &other);
         MutantStack<T, Container> &operator=(const MutantStack<T, Container> &other);
         ~MutantStack();
-        
+
         // iterators
-        typedef typename Container::iterator iterator;
-        typedef typename Container::const_iterator const_iterator;
-        typename Container::iterator begin() ;
-        typename Container::iterator end() ;
-        typename Container::const_iterator begin() const ;
-        typename Container::const_iterator end() const ;
+        typedef typename Container::iterator        iterator;
+        typedef typename Container::const_iterator  const_iterator;
+        iterator begin();
+        iterator end() ;
+        const_iterator begin() const ;
+        const_iterator end() const ;
 };
 
 template <class T, class Container>
 MutantStack<T, Container>::MutantStack() : std::stack<T, Container>()
 {
-    std::cout << "the default Constructor is called !" << std::endl;
 }
 
-template <class T, class Container>
+template <class T, class Container >
 MutantStack<T, Container>::MutantStack(const MutantStack<T, Container> &other) : std::stack<T, Container>(other)
 {
-    std::cout << "the Copy Constructor is called !" << std::endl;
     *this = other;
 }
 
 template <class T, class Container>
 MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStack<T, Container> &other)
 {
-    std::cout << "the Copy assignment operator is called !" << std::endl;
     if (this != &other)
         std::stack<T, Container>::operator=(other);
     return (*this);
@@ -61,10 +62,7 @@ MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStac
 template <class T, class Container>
 MutantStack<T, Container>::~MutantStack()
 {
-    std::cout << "the default Destructor is called !" << std::endl;
 }
-
-
 
 // iterators
 
