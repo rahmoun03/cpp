@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 08:53:39 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/24 09:26:38 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:22:44 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ class Span
         void    addNumber(int value);
         int     shortestSpan() const;
         int     longestSpan() const;
+    
+        template <typename InputIterator, typename OutputIterator>
+        void addNumber(InputIterator first, OutputIterator last);
+        
+        void display();
         class containerIsFull : public std::exception
         {
             public :
@@ -42,5 +47,13 @@ class Span
                 const char* what() const _NOEXCEPT;
         };
 };
+
+template <typename InputIterator, typename OutputIterator>
+void Span::addNumber(InputIterator first, OutputIterator last)
+{
+    if (std::distance(first, last) > vec.capacity() - vec.size())
+        throw(containerIsFull());
+    std::copy(first, last, std::inserter(vec ,vec.end()));
+}
 
 #endif 

@@ -5,29 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 03:50:07 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/31 13:40:37 by arahmoun         ###   ########.fr       */
+/*   Created: 2024/01/27 13:58:41 by arahmoun          #+#    #+#             */
+/*   Updated: 2024/01/28 14:26:38 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#include "RPN.hpp"
 
-int main()
+int main(int argc, char const *argv[])
 {
-    // vector
-    std::list <int> vec;
-    vec.push_back(42);
-    vec.push_back(1337);
-    vec.push_back(100);
-    vec.push_back(01);
-    vec.push_back(03);
-    easyFind(vec, 1);
-    vec.sort();
-    for (std::list<int>::iterator it = vec.begin(); it != vec.end(); ++it)
-        std::cout << *it << std::endl;
-    // lis
-    std::list<int> list(4, 44);
-    easyFind(list, 4);
-
+    if (argc != 2)
+    {
+        std::cout << "Error : you must enter your operation" << std::endl;
+        return 1;
+    }
+    try
+    {
+        RPN ob(argv[1]);
+        ob.calc();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     return 0;
 }

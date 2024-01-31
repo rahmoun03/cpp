@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 09:48:11 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/24 09:26:49 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:58:16 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ Span::Span(unsigned int N)
     vec.reserve(N);
 }
 
-void    Span::addNumber(int value)
+void    Span::addNumber(int value) 
 {
     if (size_ <= vec.size())
         throw(containerIsFull());
-    vec.__emplace_back(value);
+    vec.push_back(value);
 }
 
 int Span::shortestSpan() const
@@ -53,6 +53,11 @@ int Span::longestSpan() const
     std::vector<int> tmp(vec);
     std::sort(tmp.begin(), tmp.end());
     return(tmp.back() - tmp.front());
+}
+
+void Span::display()
+{
+    std::copy(vec.begin(), vec.end(), std::ostream_iterator<int>(std::cout, " "));
 }
 
 const char* Span::containerIsFull::what() const _NOEXCEPT

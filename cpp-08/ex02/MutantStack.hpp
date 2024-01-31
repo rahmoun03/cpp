@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:34:09 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/26 16:39:35 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/01/31 12:34:34 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,23 @@
 #include <iterator>
 #include <iostream>
 
-template <class T, class Container = std::deque<T > >
+template <class T = int(), class Container = std::deque<T > >
 class MutantStack : public std::stack<T, Container>
 {
-        
-    public:
-        MutantStack();
-        MutantStack(const MutantStack<T, Container> &other);
-        MutantStack<T, Container> &operator=(const MutantStack<T, Container> &other);
-        ~MutantStack();
+		
+	public:
+		MutantStack();
+		MutantStack(const MutantStack<T, Container> &other);
+		MutantStack<T, Container> &operator=(const MutantStack<T, Container> &other);
+		~MutantStack();
 
-        // iterators
-        typedef typename Container::iterator        iterator;
-        typedef typename Container::const_iterator  const_iterator;
-        iterator begin();
-        iterator end() ;
-        const_iterator begin() const ;
-        const_iterator end() const ;
+		// iterators
+		typedef typename Container::iterator            iterator;
+		typedef typename Container::reverse_iterator    reverse_iterator;
+		iterator begin() ;
+		iterator end() ;
+		reverse_iterator rbegin() ;
+		reverse_iterator rend() ;
 };
 
 template <class T, class Container>
@@ -48,15 +48,15 @@ MutantStack<T, Container>::MutantStack() : std::stack<T, Container>()
 template <class T, class Container >
 MutantStack<T, Container>::MutantStack(const MutantStack<T, Container> &other) : std::stack<T, Container>(other)
 {
-    *this = other;
+	*this = other;
 }
 
 template <class T, class Container>
 MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStack<T, Container> &other)
 {
-    if (this != &other)
-        std::stack<T, Container>::operator=(other);
-    return (*this);
+	if (this != &other)
+		std::stack<T, Container>::operator=(other);
+	return (*this);
 }
 
 template <class T, class Container>
@@ -69,25 +69,25 @@ MutantStack<T, Container>::~MutantStack()
 template <class T, class Container>
 typename Container::iterator MutantStack<T, Container>::begin() 
 {
-    return this->c.begin();
+	return this->c.begin();
 }
 
 template <class T, class Container>
 typename Container::iterator MutantStack<T, Container>::end() 
 {
-    return this->c.end();
+	return this->c.end();
 }
 
 template <class T, class Container>
-typename Container::const_iterator MutantStack<T, Container>::begin() const 
+typename Container::reverse_iterator MutantStack<T, Container>::rbegin() 
 {
-    return this->c.begin();
+	return this->c.rbegin();
 }
 
 template <class T, class Container>
-typename Container::const_iterator MutantStack<T, Container>::end() const 
+typename Container::reverse_iterator MutantStack<T, Container>::rend() 
 {
-    return this->c.end();
+	return this->c.rend();
 }
 
 #endif 

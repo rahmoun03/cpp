@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/20 23:07:04 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/28 16:45:42 by arahmoun         ###   ########.fr       */
+/*   Created: 2024/01/28 15:31:19 by arahmoun          #+#    #+#             */
+/*   Updated: 2024/01/30 15:34:05 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
-
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 #include <iostream>
-#include <vector>
-#include <list>
-#include <algorithm>
+#include <sstream>
+#include <deque>
+#include <map>
 #include <iterator>
+#include <algorithm>
 #include <exception>
+#define GRAY "\033[30m"
+#define GREEN "\033[32m"
+#define DEF "\033[0m"
 
-template<class T>
-void    easyFind(T &container, int value)
+class PmergeMe
 {
-    if (find(container.begin(), container.end(), value) != container.end())
-        std::cout << "found >_< " << std::endl;
-    else
-        std::cout << "not found -_- " << std::endl;
-}
+    private:
+    public:
+        PmergeMe();
+        PmergeMe(const PmergeMe &other);
+        PmergeMe &operator=(const PmergeMe &other);
+        ~PmergeMe();
+};
 
-#endif 
+#endif
