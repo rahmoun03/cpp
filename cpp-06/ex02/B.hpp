@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:39:40 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/11 22:34:31 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:12:07 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #define B_HPP
 
 #include "Base.hpp"
+#include "A.hpp"
 
-class B: public Base
+class B: public Base 
 {
-    private:
     public:
         ~B();
 };

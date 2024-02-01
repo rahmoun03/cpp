@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:50:28 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/11 23:37:02 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/01 10:12:59 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void identify(Base* p) {
 void identify(Base& p) {
     try
     {
-        (void)dynamic_cast<A &>(p);
+        A a = dynamic_cast<A &>(p);
         std::cout << "A" << std::endl;
     }
     catch(const std::exception& e)
