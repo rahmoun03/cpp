@@ -14,18 +14,16 @@
 
 int main(int argc, char const *argv[])
 {
-    PmergeMe<std::vector, int > vec(argc ,argv);
-    vec.printBefore();
-    vec.sort();
-
-
-    // PmergeMe<std::deque , int > dq(argc ,argv);
-    // dq.printBefore();
-    // dq.sort();
-
-
-    // dq.printAfter();
-    // dq.printTime(" std::deque ");
-    // vec.printTime(" std::vector ");
+    try
+    {
+        std::vector<int > vec;
+        std::list<int > lis;
+        PmergeMe object(argc, argv);
+        object.sort_vector(vec);
+    }
+    catch (const char *text)
+    {
+        std::cout << text << std::endl;    
+    }
     return 0;
 }

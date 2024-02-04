@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 03:31:36 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/22 10:38:28 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:31:15 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ T   &Array<T>::operator[](unsigned int index)
 template <class T>
 Array<T>::Array(const Array<T> &other)
 {
+    std::cout << "copy \n";
     size_ = other.size();
     this->array = new T[size_]();
     for (size_t i = 0; i < size_; i++)

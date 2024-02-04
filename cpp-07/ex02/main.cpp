@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 19:21:56 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/22 10:41:26 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:33:41 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ int main(int, char**)
             return 1;
         }
     }
+
     try
     {
-        numbers[-2] = 0;
+        numbers[0] = 0;
     }
     catch(const std::exception& e)
     {
