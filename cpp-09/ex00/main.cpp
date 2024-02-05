@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:05:45 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/27 17:24:48 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:00:30 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ int main(int argc, char const *argv[])
 {
 	if(argc != 2)
 	{
-		std::cout << "you must enter a csv file for example :"<<
+		std::cout << "you must enter a input file for example :"<<
 		GRAY<<"\n$> ./btc input.txt" << DEF<<
 		GREEN <<"\n   ^~~~~~~~~~~~~~~" << std::endl;
 		return(1);
 	}
-
 	try
 	{
 		BitcoinExchange btc(argv[1]);

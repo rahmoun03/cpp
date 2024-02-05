@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 13:58:30 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/01/30 14:54:22 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/05 13:22:49 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ bool RPN::is_number(std::string str)
 {
 	for (size_t i = 0; str[i]; i++)
 	{
-		if(!isdigit(str[i]))
+		if(str.length() > 1 && !isdigit(str[i]) && str[i] != '-')
+			return (false);
+		else if(str.length() == 1 && !isdigit(str[i]))
 			return (false);
 	}
 	return (true);
@@ -98,6 +100,8 @@ void RPN::calc( void )
 			}
 			else if(p_of_op == "/")
 			{
+				if (stk.back() == 0)
+					throw(badInput("Error : bad input"));
 				result = (*(stk.end() - 2)) / stk.back();
 				stk.pop_back();
 				stk.pop_back();

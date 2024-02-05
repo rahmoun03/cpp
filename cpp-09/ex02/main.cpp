@@ -19,7 +19,14 @@ int main(int argc, char const *argv[])
         std::vector<int > vec;
         std::list<int > lis;
         PmergeMe object(argc, argv);
+        object.stock_vector(vec);
+        object.stock_list(lis);
+        object.print(vec, "before : ");
         object.sort_vector(vec);
+        object.sort_list(lis);
+        object.print(vec, "after  : ");
+        object.print_list_time(lis);
+        object.print_vector_time(vec);
     }
     catch (const char *text)
     {
