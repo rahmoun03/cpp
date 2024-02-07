@@ -5,7 +5,7 @@ SRC = main.cpp
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 ${NAME} : $(SRC)
-	@c++ ${CFLAGS} ${SRC} -o $(NAME)
+	@c++ ${CXXFLAGS} ${SRC} -o $(NAME)
 	@tput setaf 2; echo "executable file is ready"
 	
 all : ${NAME}

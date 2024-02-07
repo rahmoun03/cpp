@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:39:11 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/05 14:35:24 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:55:57 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void PmergeMe::stock_pair_list(std::list<int> &lis)
         it++;
     }
     if(!v_is_pair)
-        pair_lis.push_back(std::pair<int, int>(*it, -1));
+        odd_lis.push_back((*it));
 }
 
 
@@ -57,22 +57,21 @@ void PmergeMe::sort_list_pairs()
     
 }
 
-void PmergeMe::sort_list_element()
+void PmergeMe::sort_list_element(lisTypePair::iterator start, lisTypePair::iterator next,lisTypePair::iterator end)
 {
-    lisTypePair::iterator it = pair_lis.begin();
-    lisTypePair::iterator end = --it;
-    it++;
-    for (; it != end; ++it)
+    if (start != end)
     {
-        for (lisTypePair::iterator next = std::next(it); next != pair_lis.end() ; ++next)
+        if(next != std::next(end, 1))
         {
-            if(it->second > next->second)
+            if(start->second > next->second)
             {
                 int first = next->first;
                 int second = next->second;
                 pair_lis.erase(next);
-                pair_lis.insert(it, std::pair<int, int>(first, second));
+                pair_lis.insert(start, std::pair<int, int>(first, second));
             }
+            sort_list_element(start, ++next, end);
+            sort_list_element(++start, std::next(start, 1), end);
         }
     }
 }
@@ -80,7 +79,6 @@ void PmergeMe::sort_list_element()
 void PmergeMe::merge_list(std::list<int> &lis)
 {
     std::list<int> v_first;
-
     for (lisTypePair::iterator it = pair_lis.begin(); it != pair_lis.end(); ++it)
     {
         v_first.push_back(it->first);
@@ -89,13 +87,18 @@ void PmergeMe::merge_list(std::list<int> &lis)
     pair_lis.clear();
     while (v_first.size())
     {
-        std::list<int>::iterator it = std::max_element(v_first.begin(), v_first.end());
+        std::list<int>::iterator it = v_first.begin();
         std::list<int>::iterator index = std::upper_bound(lis.begin(), lis.end(), *it);
         lis.insert(index, *it);
         v_first.erase(it);
     }
     if(!v_is_pair)
-        lis.erase(lis.begin());
+    {
+        std::list<int>::iterator it = odd_lis.begin();
+        std::list<int>::iterator index = std::upper_bound(lis.begin(), lis.end(), *it);
+        lis.insert(index, *it);
+        odd_lis.clear();
+    }
 }
 
 
@@ -105,7 +108,7 @@ void PmergeMe::sort_list(std::list<int> &lis)
     clock_t start = clock();
     stock_pair_list(lis);
     sort_list_pairs();
-    sort_list_element();
+    sort_list_element(pair_lis.begin(), ++pair_lis.begin(), --pair_lis.end());
     lis.clear();
     merge_list(lis);
     clock_t end = clock();
@@ -122,6 +125,6 @@ void PmergeMe::print(std::list<int> &lis, const char *text)
 void PmergeMe::print_list_time(std::list<int> &lis)
 {
     std::cout << "Time to process a range of " << lis.size() 
-                << " elements with std::list : " << final_list_time << " us\n";
+                << " elements with std::list   : " << final_list_time << " us\n";
 }
 

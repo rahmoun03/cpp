@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:31:19 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/05 12:42:39 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:55:32 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class PmergeMe
         std::stringstream ss2;
         vecTypePair pair_vec;
         lisTypePair pair_lis;
+        std::vector<int> odd_vec;
+        std::list<int> odd_lis;
         size_t  size;
         bool v_is_pair;
         bool l_is_pair;
@@ -51,7 +53,7 @@ class PmergeMe
         void stock_vector(std::vector<int> &vec);
         void stock_pair_vector(std::vector<int> &vec);
         void sort_vec_pairs();
-        void sort_vec_element();
+        void sort_vec_element(vecTypePair::iterator start, vecTypePair::iterator next,vecTypePair::iterator end);
         void merge_vec(std::vector<int> &vec);
         
         //list
@@ -59,7 +61,7 @@ class PmergeMe
         void stock_list(std::list<int> &lis);
         void stock_pair_list(std::list<int> &lis);
         void sort_list_pairs();
-        void sort_list_element();
+        void sort_list_element(lisTypePair::iterator start, lisTypePair::iterator next,lisTypePair::iterator end);
         void merge_list(std::list<int> &lis);
         
         //info

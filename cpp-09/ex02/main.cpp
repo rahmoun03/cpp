@@ -25,8 +25,8 @@ int main(int argc, char const *argv[])
         object.sort_vector(vec);
         object.sort_list(lis);
         object.print(vec, "after  : ");
-        object.print_list_time(lis);
         object.print_vector_time(vec);
+        object.print_list_time(lis);
     }
     catch (const char *text)
     {

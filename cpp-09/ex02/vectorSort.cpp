@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:38:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/05 14:35:53 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:23:32 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void PmergeMe::stock_pair_vector(std::vector<int> &vec)
         it+=2;
     }
     if(!v_is_pair)
-        pair_vec.push_back(std::pair<int, int>(*it, -1));
+        odd_vec.push_back(*it);
 }
 
 
@@ -55,28 +55,30 @@ void PmergeMe::sort_vec_pairs()
         }
     }
 }
-
-void PmergeMe::sort_vec_element()
+// TODO recursive sort
+void PmergeMe::sort_vec_element(vecTypePair::iterator start, vecTypePair::iterator next,vecTypePair::iterator end)
 {
-    for (vecTypePair::iterator it = pair_vec.begin(); it != pair_vec.end() - 1; ++it)
+    if (start != end)
     {
-        for (vecTypePair::iterator next = it + 1 ; next != pair_vec.end() ; ++next)
+        if(next != std::next(end, 1))
         {
-            if(it->second > next->second)
+            if(start->second > next->second)
             {
                 int first = next->first;
                 int second = next->second;
                 pair_vec.erase(next);
-                pair_vec.insert(it, std::pair<int, int>(first, second));
+                pair_vec.insert(start, std::pair<int, int>(first, second));
             }
+            sort_vec_element(start, ++next, end);
+            sort_vec_element(++start, std::next(start, 1), end);
         }
     }
+    // std::cout << "A ";
 }
 
 void PmergeMe::merge_vec(std::vector<int> &vec)
 {
     std::vector<int> v_first;
-
     for (vecTypePair::iterator it = pair_vec.begin(); it != pair_vec.end(); ++it)
     {
         v_first.push_back(it->first);
@@ -85,13 +87,18 @@ void PmergeMe::merge_vec(std::vector<int> &vec)
     pair_vec.clear();
     while (v_first.size())
     {
-        std::vector<int>::iterator it = std::max_element(v_first.begin(), v_first.end());
+        std::vector<int>::iterator it = v_first.begin();
         std::vector<int>::iterator index = std::upper_bound(vec.begin(), vec.end(), *it);
         vec.insert(index, *it);
         v_first.erase(it);
     }
     if(!v_is_pair)
-        vec.erase(vec.begin());
+    {
+        std::vector<int>::iterator it = odd_vec.begin();
+        std::vector<int>::iterator index = std::upper_bound(vec.begin(), vec.end(), *it);
+        vec.insert(index, *it);
+        odd_vec.clear();
+    }
 }
 
 
@@ -100,8 +107,9 @@ void PmergeMe::sort_vector(std::vector<int> &vec)
 {
     clock_t start = clock();
     stock_pair_vector(vec);
+    std::cout << "begin : "<< pair_vec.begin()->first <<" next : " << (++pair_vec.begin())->first << " after end : "<< (--pair_vec.end())->first << std::endl;
     sort_vec_pairs();
-    sort_vec_element();
+    sort_vec_element(pair_vec.begin(), ++pair_vec.begin(), --pair_vec.end());
     vec.clear();
     merge_vec(vec);
     clock_t end = clock();
