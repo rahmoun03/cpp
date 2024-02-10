@@ -24,7 +24,7 @@ int main(int argc, char const *argv[])
         object.print(vec, "before : ");
         object.sort_vector(vec);
         object.sort_list(lis);
-        object.print(vec, "after  : ");
+        object.print(lis, "after  : ");
         object.print_vector_time(vec);
         object.print_list_time(lis);
     }

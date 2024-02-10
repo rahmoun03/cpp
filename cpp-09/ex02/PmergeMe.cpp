@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 15:35:07 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:53 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:53:31 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ bool    str_isDigit(std::string str)
             return 0;
     }
     return 1;
+}
+
+lisTypePair::iterator next(lisTypePair::iterator it, size_t index)
+{
+    std::advance(it, index);
+    return it;
+}
+
+vecTypePair::iterator next(vecTypePair::iterator it, size_t index )
+{
+    std::advance(it, index);
+    return it;
 }
 
 PmergeMe::PmergeMe()

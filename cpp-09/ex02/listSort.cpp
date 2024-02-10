@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:39:11 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/07 12:55:57 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/10 10:48:49 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,53 @@ void PmergeMe::sort_list_pairs()
     }
     
 }
-
-void PmergeMe::sort_list_element(lisTypePair::iterator start, lisTypePair::iterator next,lisTypePair::iterator end)
+void PmergeMe::mergeInsert(lisTypePair &dst, size_t start, size_t midl, size_t end)
 {
-    if (start != end)
+    lisTypePair::iterator i, j, k;
+
+    k = next(dst.begin(), start);
+    i = next(pair_lis.begin(), start);
+    j = next(pair_lis.begin(), midl + 1);
+
+    while (i != next(pair_lis.begin(), midl + 1) && j != next(pair_lis.begin(), end + 1))
     {
-        if(next != std::next(end, 1))
+        if(i->second <= j->second)
         {
-            if(start->second > next->second)
-            {
-                int first = next->first;
-                int second = next->second;
-                pair_lis.erase(next);
-                pair_lis.insert(start, std::pair<int, int>(first, second));
-            }
-            sort_list_element(start, ++next, end);
-            sort_list_element(++start, std::next(start, 1), end);
+            k->first = i->first;
+            k->second = i->second;
+            i++;
+            k++;
         }
+        else
+        {
+            k->first = j->first;
+            k->second = j->second;
+            j++;
+            k++;
+        }
+    }
+    while (i != next(pair_lis.begin(), midl + 1))
+    {
+        k->first = i->first;
+        k->second = i->second;
+        i++;
+        k++;
+    }
+    for (size_t j = start ; j <= end; j++)
+    {
+        next(pair_lis.begin(), j)->first = next(dst.begin(), j)->first;
+        next(pair_lis.begin(), j)->second = next(dst.begin(), j)->second;
+    }
+}
+
+void PmergeMe::sort_list_element(lisTypePair &dst, size_t start, size_t end)
+{
+    if ( start < end )
+    {
+        int midl = (start + end) / 2;
+        sort_list_element(dst, start , midl);
+        sort_list_element(dst, midl + 1 , end);
+        mergeInsert(dst, start, midl, end);
     }
 }
 
@@ -108,7 +138,9 @@ void PmergeMe::sort_list(std::list<int> &lis)
     clock_t start = clock();
     stock_pair_list(lis);
     sort_list_pairs();
-    sort_list_element(pair_lis.begin(), ++pair_lis.begin(), --pair_lis.end());
+    lisTypePair dst(pair_lis.begin(), pair_lis.end());
+    sort_list_element(dst, 0, pair_lis.size() - 1);
+    dst.clear();
     lis.clear();
     merge_list(lis);
     clock_t end = clock();

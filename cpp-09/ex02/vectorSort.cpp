@@ -6,7 +6,7 @@
 /*   By: arahmoun <arahmoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 10:38:47 by arahmoun          #+#    #+#             */
-/*   Updated: 2024/02/07 13:23:32 by arahmoun         ###   ########.fr       */
+/*   Updated: 2024/02/10 10:49:16 by arahmoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,57 @@ void PmergeMe::sort_vec_pairs()
             it->first = tmp;
         }
     }
+
 }
 // TODO recursive sort
-void PmergeMe::sort_vec_element(vecTypePair::iterator start, vecTypePair::iterator next,vecTypePair::iterator end)
+void PmergeMe::mergeInsert(vecTypePair &dst, size_t start, size_t midl, size_t end)
 {
-    if (start != end)
+    vecTypePair::iterator i, j, k;
+
+    k = next(dst.begin(), start);
+    i = next(pair_vec.begin(), start);
+    j = next(pair_vec.begin(), midl + 1);
+
+    while (i != next(pair_vec.begin(), midl + 1) && j != next(pair_vec.begin(), end + 1))
     {
-        if(next != std::next(end, 1))
+        if(i->second <= j->second)
         {
-            if(start->second > next->second)
-            {
-                int first = next->first;
-                int second = next->second;
-                pair_vec.erase(next);
-                pair_vec.insert(start, std::pair<int, int>(first, second));
-            }
-            sort_vec_element(start, ++next, end);
-            sort_vec_element(++start, std::next(start, 1), end);
+            k->first = i->first;
+            k->second = i->second;
+            i++;
+            k++;
+        }
+        else
+        {
+            k->first = j->first;
+            k->second = j->second;
+            j++;
+            k++;
         }
     }
-    // std::cout << "A ";
+    while (i != next(pair_vec.begin(), midl + 1))
+    {
+        k->first = i->first;
+        k->second = i->second;
+        i++;
+        k++;
+    }
+    for (size_t j = start ; j <= end; j++)
+    {
+        next(pair_vec.begin(), j)->first = next(dst.begin(), j)->first;
+        next(pair_vec.begin(), j)->second = next(dst.begin(), j)->second;
+    }
+}
+
+void PmergeMe::sort_vec_element(vecTypePair &dst, size_t start, size_t end)
+{
+    if ( start < end )
+    {
+        int midl = (start + end) / 2;
+        sort_vec_element(dst, start , midl);
+        sort_vec_element(dst, midl + 1 , end);
+        mergeInsert(dst, start, midl, end);
+    }
 }
 
 void PmergeMe::merge_vec(std::vector<int> &vec)
@@ -101,15 +132,14 @@ void PmergeMe::merge_vec(std::vector<int> &vec)
     }
 }
 
-
-
 void PmergeMe::sort_vector(std::vector<int> &vec)
 {
     clock_t start = clock();
     stock_pair_vector(vec);
-    std::cout << "begin : "<< pair_vec.begin()->first <<" next : " << (++pair_vec.begin())->first << " after end : "<< (--pair_vec.end())->first << std::endl;
     sort_vec_pairs();
-    sort_vec_element(pair_vec.begin(), ++pair_vec.begin(), --pair_vec.end());
+    vecTypePair dst(pair_vec.begin(), pair_vec.end());
+    sort_vec_element(dst, 0, pair_vec.size() - 1);
+    dst.clear();
     vec.clear();
     merge_vec(vec);
     clock_t end = clock();
